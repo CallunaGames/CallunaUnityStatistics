@@ -1,20 +1,20 @@
 {
-  "name": "com.calluna.template",
+  "name": "com.calluna.statistics",
   "version": "1.0.0",
-  "displayName": "Calluna Unity Package Template",
-  "description": "Package Description",
+  "displayName": "Calluna Unity Statistics",
+  "description": "An Calluna Games Unity package for collecting statistics data",
   "unity": "6000.33",
   "unityRelease": "",
-  "documentationUrl": "https://github.com/CallunaGames/CallunaUnityTemplate",
-  "changelogUrl": "https://github.com/CallunaGames/CallunaUnityTemplate/commits/v1.0.0",
+  "documentationUrl": "https://github.com/CallunaGames/CallunaUnityStatistics",
+  "changelogUrl": "https://github.com/CallunaGames/CallunaUnityStatistics/commits/v1.0.0",
   "licensesUrl": "",
   "dependencies": {
   },
   "samples": [
     {
-      "displayName": "Sample Name",
+      "displayName": "Statistics Sample",
       "description": "Sample Description",
-      "path": "Samples~/Sample1"
+      "path": "Samples~/Statistics"
     }
   ],
   "keywords": [
