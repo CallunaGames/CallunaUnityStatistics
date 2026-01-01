@@ -9,12 +9,14 @@
   "changelogUrl": "https://github.com/CallunaGames/CallunaUnityStatistics/commits/v1.0.0",
   "licensesUrl": "",
   "dependencies": {
+    "com.calluna.core": "1.0.6",
+    "com.calluna.di": "1.0.2"
   },
   "samples": [
     {
-      "displayName": "Statistics Sample",
-      "description": "Sample Description",
-      "path": "Samples~/Statistics"
+      "displayName": "Statistics Basics Sample",
+      "description": "A scene showcasing the basics of statistics",
+      "path": "Samples~/Basics"
     }
   ],
   "keywords": [

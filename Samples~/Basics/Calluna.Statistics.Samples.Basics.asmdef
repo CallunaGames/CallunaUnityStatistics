@@ -1,0 +1,19 @@
+{
+    "name": "Calluna.Statistics.Samples.Basics",
+    "rootNamespace": "Calluna.Statistics.Samples.Basics",
+    "references": [
+        "GUID:fb92ad7c22f767448a052126eb8fa706",
+        "GUID:7c5e5a96450ad6a4c9f6767dd054cb02",
+        "GUID:a4e2fcc097ca52d46a2cc62ef3c5e9bf",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
