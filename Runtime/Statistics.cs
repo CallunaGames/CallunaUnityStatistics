@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Calluna.Statistics
 {
@@ -19,10 +20,19 @@ namespace Calluna.Statistics
 
             if (entry is not StatisticsEntry<T> concreteEntry)
             {
-                throw new InvalidOperationException($"Cannot get entry for statistic {statisticId} due to a value type mismatch: {typeof(T)} | {entry.GetType()}");
+                throw new InvalidOperationException(
+                    $"Cannot get entry for statistic {statisticId} due to a value type mismatch: {typeof(T)} | {entry.GetType()}");
             }
-            
+
             return concreteEntry;
+        }
+
+        public IEnumerable<StatisticsEntry> GetAllEntries()
+        {
+            foreach (StatisticsEntry entry in _statistics.Values)
+            {
+                yield return entry;
+            }
         }
     }
 }
