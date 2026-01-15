@@ -17,10 +17,10 @@ namespace Calluna.Statistics
             Value = new Observable<T>();
         }
 
-        public StatisticsEntry(StatisticId id, T initalValue)
+        public StatisticsEntry(StatisticId id, T initialValue)
         {
             Id = id;
-            Value = new Observable<T>() { Value = initalValue };
+            Value = new Observable<T>() { Value = initialValue };
         }
     }
 }

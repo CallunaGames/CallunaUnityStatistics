@@ -1,9 +1,10 @@
+using System;
 using Calluna.DI;
 using UnityEngine;
 
 namespace Calluna.Statistics
 {
-    public abstract class StatisticsEntryInstaller<T> : MonoInstaller, Injectable
+    public class StatisticsEntryInstaller : MonoInstaller, Injectable
     {
         [SerializeField] private StatisticId _id;
         private Statistics _statistics;
@@ -15,10 +16,9 @@ namespace Calluna.Statistics
         
         public override void InstallBindings(Binder binder)
         {
-            StatisticsEntry<T> entry = _statistics.GetOrCreateEntry<T>(_id);
-            binder.Bind<ReadonlyObservable<T>>().And<Observable<T>>().ToInstance(entry.Value);
-            binder.Bind<ReadonlyStatisticsEntry<T>>().And<StatisticsEntry<T>>().And<StatisticsEntry>()
-                .ToInstance(entry);
+            Type binderType = typeof(StatisticEntryBinder<>).MakeGenericType(_id.Type.Type);
+            StatisticEntryBinder statisticEntryBinder = (StatisticEntryBinder) Activator.CreateInstance(binderType);
+            statisticEntryBinder.Bind(binder, _statistics, _id);
         }
     }
 }

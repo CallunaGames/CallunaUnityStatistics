@@ -6,8 +6,8 @@ namespace Calluna.Statistics
 {
     public class Statistics
     {
-        private readonly Dictionary<ScriptableObjectId, StatisticsEntry> _statistics =
-            new Dictionary<ScriptableObjectId, StatisticsEntry>();
+        private readonly Dictionary<StatisticId, StatisticsEntry> _statistics =
+            new Dictionary<StatisticId, StatisticsEntry>();
         
         public StatisticsEntry<T> GetOrCreateEntry<T>(StatisticId statisticId)
         {

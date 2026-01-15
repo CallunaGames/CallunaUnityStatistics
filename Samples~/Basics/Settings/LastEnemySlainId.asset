@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566efb364f9bb504784de2ce5f103f3a, type: 3}
   m_Name: LastEnemySlainId
   m_EditorClassIdentifier: 
-  <Descriptor>k__BackingField: LastEnemySlayn
+  <Id>k__BackingField: LastEnemySlain
+  <Type>k__BackingField: {fileID: 11400000, guid: c33bec44b4ee9c64c9b5547a568cf356, type: 2}

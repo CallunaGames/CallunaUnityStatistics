@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566efb364f9bb504784de2ce5f103f3a, type: 3}
-  m_Name: TotalDamageId
+  m_Script: {fileID: 11500000, guid: ca0d0b47466a4acfb471098a53a54afa, type: 3}
+  m_Name: Float
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: TotalDamage
-  <Type>k__BackingField: {fileID: 11400000, guid: a58c51ceab1d39e41b9f03bb271001e7, type: 2}

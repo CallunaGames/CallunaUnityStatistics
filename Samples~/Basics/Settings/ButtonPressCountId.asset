@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566efb364f9bb504784de2ce5f103f3a, type: 3}
   m_Name: ButtonPressCountId
   m_EditorClassIdentifier: 
-  <Descriptor>k__BackingField: ButtonPressedCount
+  <Id>k__BackingField: ButtonPressCount
+  <Type>k__BackingField: {fileID: 11400000, guid: c1d461b730973ec41afb9a819bb1277f, type: 2}
