@@ -1,5 +1,5 @@
+using System.Globalization;
 using Calluna.DI;
-using UnityEngine;
 
 namespace Calluna.Statistics.Samples.Basics
 {
@@ -8,6 +8,7 @@ namespace Calluna.Statistics.Samples.Basics
         public override void InstallBindings(Binder binder)
         {
             binder.BindToNewSelf<Statistics>().AsSingle();
+            binder.BindInstance(CultureInfo.CurrentCulture);
         }
     }
 }

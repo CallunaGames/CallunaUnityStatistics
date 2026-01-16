@@ -10,7 +10,7 @@ namespace Calluna.Statistics.Samples.Basics
         [SerializeField] private StatisticId _id;
 
         private Statistics _statistics;
-        private StatisticsEntry<int> _statisticsEntry;
+        private StatisticsEntry _statisticsEntry;
 
         public void Inject(Resolver resolver)
         {
@@ -19,7 +19,7 @@ namespace Calluna.Statistics.Samples.Basics
 
         public void Initialize()
         {
-            _statisticsEntry = _statistics.GetOrCreateEntry<int>(_id);
+            _statisticsEntry = _statistics.GetOrCreateEntry(_id);
             _button.onClick.AddListener(IncrementPressedStatistics);
         }
 
@@ -30,7 +30,7 @@ namespace Calluna.Statistics.Samples.Basics
 
         private void IncrementPressedStatistics()
         {
-            _statisticsEntry.Value.Value++;
+            _statisticsEntry.SetValue(_statisticsEntry.GetValue<int>() + 1);
         }
     }
 }

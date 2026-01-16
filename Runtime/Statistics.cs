@@ -1,22 +1,35 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
+using Calluna.DI;
 
 namespace Calluna.Statistics
 {
-    public class Statistics
+    public class Statistics : Injectable
     {
         private readonly Dictionary<StatisticId, StatisticsEntry> _statistics =
             new Dictionary<StatisticId, StatisticsEntry>();
+        private CultureInfo _cultureInfo;
+
+        public void Inject(Resolver resolver)
+        {
+            _cultureInfo = resolver.ResolveOptional<CultureInfo>() ?? CultureInfo.InvariantCulture;
+        }
         
-        public StatisticsEntry<T> GetOrCreateEntry<T>(StatisticId statisticId)
+        public StatisticsEntry GetOrCreateEntry(StatisticId statisticId)
         {
             if (!_statistics.TryGetValue(statisticId, out StatisticsEntry entry))
             {
-                StatisticsEntry<T> result = new StatisticsEntry<T>(statisticId);
-                _statistics.Add(statisticId, result);
-                return result;
+                entry = CreateEntry(statisticId);
+                _statistics.Add(statisticId, entry);
             }
+
+            return entry;
+        }
+
+        public StatisticsEntry<T> GetOrCreateEntry<T>(StatisticId statisticId)
+        {
+            StatisticsEntry entry = GetOrCreateEntry(statisticId);
 
             if (entry is not StatisticsEntry<T> concreteEntry)
             {
@@ -25,6 +38,12 @@ namespace Calluna.Statistics
             }
 
             return concreteEntry;
+        }
+
+        private StatisticsEntry CreateEntry(StatisticId statisticId)
+        {
+            Type type = typeof(StatisticsEntry<>).MakeGenericType(statisticId.Type.Type);
+            return (StatisticsEntry)Activator.CreateInstance(type, statisticId, _cultureInfo);
         }
 
         public IEnumerable<StatisticsEntry> GetAllEntries()

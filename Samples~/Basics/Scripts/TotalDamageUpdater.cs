@@ -9,9 +9,10 @@ namespace Calluna.Statistics.Samples.Basics
         [SerializeField] private Button _button;
         [SerializeField] private StatisticId _id;
         [SerializeField] private Vector2 _damageRange = new Vector2(10, 25);
+        [SerializeField] private bool _treatAsInt = false;
 
         private Statistics _statistics;
-        private StatisticsEntry<float> _statisticsEntry;
+        private StatisticsEntry _statisticsEntry;
         private System.Random _random = new System.Random();
 
         public void Inject(Resolver resolver)
@@ -21,7 +22,7 @@ namespace Calluna.Statistics.Samples.Basics
 
         public void Initialize()
         {
-            _statisticsEntry = _statistics.GetOrCreateEntry<float>(_id);
+            _statisticsEntry = _statistics.GetOrCreateEntry(_id);
             _button.onClick.AddListener(AddDamage);
         }
 
@@ -32,8 +33,11 @@ namespace Calluna.Statistics.Samples.Basics
 
         private void AddDamage()
         {
-            _statisticsEntry.Value.Value += 
-                (float)_random.NextDouble() * (_damageRange.y - _damageRange.x) + _damageRange.x;
+            float damage = (float)_random.NextDouble() * (_damageRange.y - _damageRange.x) + _damageRange.x;
+            if(_treatAsInt)
+                _statisticsEntry.SetValue(_statisticsEntry.GetValue<int>() + (int)damage);
+            else
+                _statisticsEntry.SetValue(_statisticsEntry.GetValue<float>() + damage);
         }
     }
 }
