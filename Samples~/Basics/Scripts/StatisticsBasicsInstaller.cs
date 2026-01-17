@@ -9,6 +9,7 @@ namespace Calluna.Statistics.Samples.Basics
         {
             binder.BindToNewSelf<Statistics>().AsSingle();
             binder.BindInstance(CultureInfo.CurrentCulture);
+            binder.BindToNewSelf<StatisticEntryFactory>().AsSingle();
         }
     }
 }

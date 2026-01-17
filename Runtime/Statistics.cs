@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using Calluna.DI;
 
 namespace Calluna.Statistics
@@ -9,18 +8,18 @@ namespace Calluna.Statistics
     {
         private readonly Dictionary<StatisticId, StatisticsEntry> _statistics =
             new Dictionary<StatisticId, StatisticsEntry>();
-        private CultureInfo _cultureInfo;
+        private StatisticEntryFactory _entryFactory;
 
         public void Inject(Resolver resolver)
         {
-            _cultureInfo = resolver.ResolveOptional<CultureInfo>() ?? CultureInfo.InvariantCulture;
+            _entryFactory = resolver.Resolve<StatisticEntryFactory>();
         }
         
         public StatisticsEntry GetOrCreateEntry(StatisticId statisticId)
         {
             if (!_statistics.TryGetValue(statisticId, out StatisticsEntry entry))
             {
-                entry = CreateEntry(statisticId);
+                entry = _entryFactory.Create(statisticId);
                 _statistics.Add(statisticId, entry);
             }
 
@@ -38,12 +37,6 @@ namespace Calluna.Statistics
             }
 
             return concreteEntry;
-        }
-
-        private StatisticsEntry CreateEntry(StatisticId statisticId)
-        {
-            Type type = typeof(StatisticsEntry<>).MakeGenericType(statisticId.Type.Type);
-            return (StatisticsEntry)Activator.CreateInstance(type, statisticId, _cultureInfo);
         }
 
         public IEnumerable<StatisticsEntry> GetAllEntries()

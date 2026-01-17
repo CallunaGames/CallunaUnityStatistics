@@ -35,9 +35,9 @@ namespace Calluna.Statistics.Samples.Basics
         {
             float damage = (float)_random.NextDouble() * (_damageRange.y - _damageRange.x) + _damageRange.x;
             if(_treatAsInt)
-                _statisticsEntry.SetValue(_statisticsEntry.GetValue<int>() + (int)damage);
+                _statisticsEntry.ChangeValueBy((int)damage);
             else
-                _statisticsEntry.SetValue(_statisticsEntry.GetValue<float>() + damage);
+                _statisticsEntry.ChangeValueBy(damage);
         }
     }
 }

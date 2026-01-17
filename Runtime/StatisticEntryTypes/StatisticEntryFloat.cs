@@ -12,5 +12,17 @@ namespace Calluna.Statistics
             result = (float)convertible.ToDouble(cultureInfo);
             return true;
         }
+        
+        protected override bool CompareTo(float value, float other, out int compareValue)
+        {
+            compareValue = value.CompareTo(other);
+            return true;
+        }
+
+        protected override bool ChangeBy(float value, float other, out float result)
+        {
+            result = value + other;
+            return true;
+        }
     }
 }

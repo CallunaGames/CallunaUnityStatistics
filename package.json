@@ -1,15 +1,15 @@
 {
   "name": "com.calluna.statistics",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "displayName": "Calluna Unity Statistics",
   "description": "An Calluna Games Unity package for collecting statistics data",
   "unity": "6000.33",
   "unityRelease": "",
   "documentationUrl": "https://github.com/CallunaGames/CallunaUnityStatistics",
-  "changelogUrl": "https://github.com/CallunaGames/CallunaUnityStatistics/compare/v1.1.0...v1.1.1",
+  "changelogUrl": "https://github.com/CallunaGames/CallunaUnityStatistics/compare/v1.1.1...v1.2.0",
   "licensesUrl": "",
   "dependencies": {
-    "com.calluna.core": "1.0.6",
+    "com.calluna.core": "1.0.8",
     "com.calluna.di": "1.0.2"
   },
   "samples": [
