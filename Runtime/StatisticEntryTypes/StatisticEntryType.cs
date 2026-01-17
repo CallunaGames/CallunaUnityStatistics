@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Calluna.Statistics
@@ -18,21 +19,21 @@ namespace Calluna.Statistics
         {
             result = default;
 
-            if (value is TTo toValue)
+            if (typeof(TFrom) == typeof(TTo))
             {
-                result = toValue;
+                result = Unsafe.As<TFrom, TTo>(ref value);
                 return true;
             }
-            TValue tValue = default;
-            if (typeof(TTo) == typeof(TValue) && TryConvertTo(value, out tValue))
+
+            if (typeof(TTo) == typeof(TValue) && TryConvertTo(value, out TValue tValue))
             {
-                result = (TTo)(object)tValue;
+                result = Unsafe.As<TValue, TTo>(ref tValue);
                 return true;
             }
+
             if (value is IConvertible convertible)
             {
-                object obj = convertible.ToType(typeof(TTo), cultureInfo);
-                result = (TTo)obj;
+                result = (TTo)convertible.ToType(typeof(TTo), cultureInfo);
                 return true;
             }
 
@@ -58,7 +59,7 @@ namespace Calluna.Statistics
 
         protected virtual bool TryConvertTo(IConvertible convertible, out TValue result, CultureInfo cultureInfo)
         {
-            result = default;
+            result = (TValue)convertible.ToType(Type, cultureInfo);
             return false;
         }
     }

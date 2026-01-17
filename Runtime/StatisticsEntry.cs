@@ -23,7 +23,6 @@ namespace Calluna.Statistics
         public StatisticsEntry(StatisticId id, CultureInfo cultureInfo = default) : this(id, default, cultureInfo)
         {
             Id = id;
-            Value = new Observable<TValue>();
             _cultureInfo = cultureInfo;
         }
 
