@@ -9,8 +9,8 @@
   "changelogUrl": "https://github.com/CallunaGames/CallunaUnityStatistics/compare/v1.1.1...v1.2.0",
   "licensesUrl": "",
   "dependencies": {
-    "com.calluna.core": "1.0.8",
-    "com.calluna.di": "1.0.2"
+    "com.calluna.core": "https://github.com/CallunaGames/CallunaUnityCore.git#v1.2.0",
+    "com.calluna.di": "https://github.com/CallunaGames/CallunaUnityDI.git#v1.3.1"
   },
   "samples": [
     {
