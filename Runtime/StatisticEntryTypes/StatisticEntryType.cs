@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Calluna.Statistics
@@ -20,7 +19,7 @@ namespace Calluna.Statistics
 
             if (typeof(TValue) == typeof(TTo))
             {
-                result = Unsafe.As<TValue, TTo>(ref value);
+                result = (TTo)(object)value;
                 return true;
             }
 
